@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppliMeteo"
+             BackgroundImage="BlueGradient.jpg"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="AppliMeteo.MainPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="WhiteSmoke" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
+            <BoxView Grid.Row="4" HeightRequest="1" BackgroundColor="WhiteSmoke" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
+
+            <SearchBar x:Name="SearchBar" Grid.Row="0" HorizontalOptions="FillAndExpand" SearchCommand="{Binding Search}" 
+              BackgroundColor="Gray"
+             TextColor="WhiteSmoke"                  SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lblVille" FontSize="Large" Text="{Binding Ville}" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                    <Label Grid.Row="1" x:Name="lblDate" FontSize="Micro" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Date}"/>
+
+                    <Image Source="refresh.png" Grid.RowSpan="2" Grid.Column="1" WidthRequest="40" HeightRequest="40" Margin="0,0,30,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding btnRefresh}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image Source="sweater.png" Grid.RowSpan="2" Grid.Column="2" WidthRequest="40" HeightRequest="40" Margin="0,0,30,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding btnSweater}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="2" x:Name="imgCondition" Source="{Binding ConditionImg}"/>
+                    <Label Grid.Column="1" x:Name="lblTemp" FontSize="Large" TextColor="WhiteSmoke" VerticalOptions="Center" Text="{Binding Temp}"/>
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="lblHumidite" FontSize="Medium" TextColor="WhiteSmoke" Text="{Binding Humidite}"/>
+                </Grid>
+
+                <Label Grid.Row="3" x:Name="lblConditionBref" FontSize="Large" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Condition}"/>
+            </Grid>
+
+            <Grid Grid.Row="3" RowSpacing="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="9" Text="Horaire" FontSize="Medium" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="3" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="5" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="7" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="8H" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="2" Text="12H" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="4" Text="16H" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="6" Text="20H" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="8" Text="23H" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+
+                <Image Grid.Row="2" Grid.Column="0" x:Name="imgHuit" Source="{Binding ImgHuit}"/>
+                <Image Grid.Row="2" Grid.Column="2" x:Name="imgDouze" Source="{Binding ImgDouze}"/>
+                <Image Grid.Row="2" Grid.Column="4" x:Name="imgSeize" Source="{Binding ImgSeize}"/>
+                <Image Grid.Row="2" Grid.Column="6" x:Name="imgVingt" Source="{Binding ImgVingt}"/>
+                <Image Grid.Row="2" Grid.Column="8" x:Name="imgVingtTrois" Source="{Binding ImgVingtTrois}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" x:Name="lblTempHuit" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding TempHuit}"/>
+                <Label Grid.Row="3" Grid.Column="2" x:Name="lblTempDouze" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding TempDouze}" />
+                <Label Grid.Row="3" Grid.Column="4" x:Name="lblTempSeize" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding TempSeize}"/>
+                <Label Grid.Row="3" Grid.Column="6" x:Name="lblTempVingt" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding TempVingt}"/>
+                <Label Grid.Row="3" Grid.Column="8" x:Name="lblTempVingtTrois" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding TempVingtTrois}" />
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" HorizontalOptions="Center">
+                    <Image Source="drop.png"/>
+                    <Label TextColor="White" x:Name="lblHumHuit" Text="{Binding HumiditeHuit}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center">
+                    <Image Source="drop.png"/>
+                    <Label TextColor="White" x:Name="lblHumDouze" Text="{Binding HumiditeDouze}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="4" HorizontalOptions="Center">
+                    <Image Source="drop.png"/>
+                    <Label TextColor="White" x:Name="lblHumSeize" Text="{Binding HumiditeSeize}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="6" HorizontalOptions="Center">
+                    <Image Source="drop.png"/>
+                    <Label TextColor="White" x:Name="lblHumVingt" Text="{Binding HumiditeVingt}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="8" HorizontalOptions="Center">
+                    <Image Source="drop.png"/>
+                    <Label TextColor="White" x:Name="lblHumVingtTrois" Text="{Binding HumiditeVingtTrois}"/>
+                </StackLayout>
+
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="9" Text="Quotidien" FontSize="Medium" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="1" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="3" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="5" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+                <BoxView Grid.Row="1" Grid.RowSpan="5" Grid.Column="7" WidthRequest="1" BackgroundColor="WhiteSmoke" VerticalOptions="FillAndExpand" Margin="0,30,0,30"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Auj." FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" />
+                <Label Grid.Row="1" Grid.Column="2" x:Name="lblJour1" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Jour1}"/>
+                <Label Grid.Row="1" Grid.Column="4" x:Name="lblJour2" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Jour2}"/>
+                <Label Grid.Row="1" Grid.Column="6" x:Name="lblJour3" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Jour3}"/>
+                <Label Grid.Row="1" Grid.Column="8" x:Name="lblJour4" FontSize="Small" TextColor="WhiteSmoke" HorizontalOptions="Center" Text="{Binding Jour4}"/>
+
+                <Image Grid.Row="2" Grid.Column="0" x:Name="imgJour0" Source="{Binding ImgJour0}"/>
+                <Image Grid.Row="2" Grid.Column="2" x:Name="imgJour1" Source="{Binding ImgJour1}"/>
+                <Image Grid.Row="2" Grid.Column="4" x:Name="imgJour2" Source="{Binding ImgJour2}"/>
+                <Image Grid.Row="2" Grid.Column="6" x:Name="imgJour3" Source="{Binding ImgJour3}"/>
+                <Image Grid.Row="2" Grid.Column="8" x:Name="imgJour4" Source="{Binding ImgJour4}"/>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="3" HorizontalOptions="Center" Padding="0,10,0,5">
+                    <Image Source="topArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour0TempMax" FontSize="Small" Text="{Binding Jour0TempMax}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" HorizontalOptions="Center">
+                    <Image Source="downArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour0TempMin" FontSize="Small" Text="{Binding Jour0TempMin}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" Padding="0,10,0,5">
+                    <Image Source="topArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour1TempMax" FontSize="Small" Text="{Binding Jour1TempMax}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center">
+                    <Image Source="downArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour1TempMin" FontSize="Small" Text="{Binding Jour1TempMin}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="4" HorizontalOptions="Center" Padding="0,10,0,5">
+                    <Image Source="topArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour2TempMax" FontSize="Small" Text="{Binding Jour2TempMax}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="4" HorizontalOptions="Center">
+                    <Image Source="downArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour2TempMin" FontSize="Small" Text="{Binding Jour2TempMin}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="6" HorizontalOptions="Center" Padding="0,10,0,5">
+                    <Image Source="topArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour3TempMax" FontSize="Small" Text="{Binding Jour3TempMax}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="6" HorizontalOptions="Center">
+                    <Image Source="downArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour3TempMin" FontSize="Small" Text="{Binding Jour3TempMin}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="8" HorizontalOptions="Center" Padding="0,10,0,5">
+                    <Image Source="topArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour4TempMax" FontSize="Small" Text="{Binding Jour4TempMax}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="8" HorizontalOptions="Center">
+                    <Image Source="downArrow.png"/>
+                    <Label TextColor="White" x:Name="lblJour4TempMin" FontSize="Small" Text="{Binding Jour4TempMin}"/>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+
+</ContentPage>
